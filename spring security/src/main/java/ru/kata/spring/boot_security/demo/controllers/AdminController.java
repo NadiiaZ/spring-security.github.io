@@ -28,6 +28,14 @@ public class AdminController {
         return "admin/index";
     }
 
+    @GetMapping("/{id}")
+    public String index(@PathVariable("id") int id,  Model model) {
+        User user = userService.showUserById(id);
+        model.addAttribute("user",user);
+        return "admin/user";
+    }
+
+
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") int id) {
         userService.deleteUser(id);
